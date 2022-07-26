@@ -1,12 +1,10 @@
-on: [push]
+on: workflow_dispatch
 
 jobs:
   test:
     runs-on: ubuntu-latest
     name: Test conda skeleton publish action
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
       - name: Publish conda package from PyPI package
         uses: ./
         with:
