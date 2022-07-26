@@ -1,0 +1,16 @@
+on:
+  workflow_dispatch:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test conda skeleton publish action
+    steps:
+      - name: Publish conda package from PyPI package
+        uses: ./
+        with:
+          pypi_package: "driptorch"
+          python_version: "3.10"
+          upload_channel: "holtz"
+          access_token: ${{ secrets.ANACONDA_TOKEN }}
