@@ -10,6 +10,7 @@ done
 
 cd $INPUT_PYPI_PACKAGE
 conda mambabuild --python $INPUT_PYTHON_VERSION --output-folder . .
+rm -r noarch
 
 echo "Converting to other platforms"
 find -name *.tar.bz2 | while read file
@@ -17,9 +18,7 @@ do
     echo $file
     for PLATFORM in "${INPUT_PLATFORMS[@]}"
     do
-        if ["noarch" != $PLATFORM]; then
-          conda convert --force --platform $PLATFORM $file -o .
-        fi
+        conda convert --force --platform $PLATFORM $file -o .
     done
 done
 
