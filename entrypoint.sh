@@ -13,16 +13,12 @@ conda mambabuild --python $INPUT_PYTHON_VERSION --output-folder . .
 rm -r noarch
 
 echo "Converting to other platforms"
-find -name *.tar.bz2 | while read file
-do
-    echo $file
-    conda convert --force --platform all $file -o .
-done
+conda convert --force --platform all linux-64/*.tar.bz2 -o .
 
 echo "Uploading to anaconda channel"
 export ANACONDA_API_TOKEN=$INPUT_ACCESS_TOKEN
-find . -name *.tar.bz2 | while read file
+for PLATFORM in "${INPUT_PLATFORMS[@]}"
 do
-    echo $file
-    anaconda upload --user $INPUT_UPLOAD_CHANNEL $file
+    echo $PLATFORM
+    anaconda upload --user $INPUT_UPLOAD_CHANNEL $PLATFORM/*.tar.bz2
 done
