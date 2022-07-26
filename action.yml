@@ -1,0 +1,24 @@
+name: "Conda skeleton publish"
+description: "Build and publish Conda package from PyPI"
+author: "Holtz TDS"
+branding:
+  icon: "play"
+  color: "orange"
+inputs:
+  pypi_package:
+    description: "Name of PyPI package"
+  python_version:
+    description: "Python version to build"
+  build_channels:
+    description: "Conda channels to use for building package"
+    default: "conda-forge"
+  upload_channel:
+    description: "Conda channel to upload to"
+  access_token:
+    description: "Anaconda client access token"
+  platforms:
+    description: "Platforms to publish"
+    default: "win-64 osx-64 osx-arm64 linux-64 linux-aarch64"
+runs:
+  using: "docker"
+  image: "Dockerfile"
