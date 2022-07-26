@@ -9,7 +9,7 @@ do
 done
 
 cd $INPUT_PYPI_PACKAGE
-conda build --python $INPUT_PYTHON_VERSION --output-folder . .
+conda mambabuild --python $INPUT_PYTHON_VERSION --output-folder . .
 
 echo "Converting to other platforms"
 find -name *.tar.bz2 | while read file
