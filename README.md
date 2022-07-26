@@ -8,8 +8,8 @@ Generate a Conda build recipe from a PyPI package and publish to an Anaconda cha
 -  `python_version`* : _Python version to build package for_
 -  `upload_channel`* : _Conda channel where the package will be uploaded_
 -  `access_token`* : _Anaconda access token with read and write API permissions_
--  `build_channels`: _Space seperated string of conda channels to use during the build. Defaults to `conda-forge`_
-- `platforms`: _Space seperated string of platforms to build. Defaults to `"win-64 osx-64 osx-arm64 linux-64 linux-aarch64"`_
+-  `build_channels`: _Space separated string of conda channels to use during the build. Defaults to `conda-forge`_
+- `platforms`: _Space separated string of platforms to build. Defaults to `"win-64 osx-64 osx-arm64 linux-64 linux-aarch64"`_
 
 > `*` denotes required inputs
 
