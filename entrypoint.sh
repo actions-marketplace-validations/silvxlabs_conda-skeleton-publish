@@ -24,7 +24,7 @@ do
 done
 
 echo "Uploading to anaconda channel"
-export ANACONDA_API_TOKEN=$INPUT_ANACONDA_TOKEN
+export ANACONDA_API_TOKEN=$INPUT_ACCESS_TOKEN
 find . -name *.tar.bz2 | while read file
 do
     echo $file
