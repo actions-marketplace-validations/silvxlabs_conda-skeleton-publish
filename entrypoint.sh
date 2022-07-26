@@ -16,10 +16,7 @@ echo "Converting to other platforms"
 find -name *.tar.bz2 | while read file
 do
     echo $file
-    for PLATFORM in "${INPUT_PLATFORMS[@]}"
-    do
-        conda convert --force --platform $PLATFORM $file -o .
-    done
+    conda convert --force --platform all $file -o .
 done
 
 echo "Uploading to anaconda channel"
