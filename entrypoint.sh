@@ -29,5 +29,11 @@ export ANACONDA_API_TOKEN=$INPUT_ACCESS_TOKEN
 for PLATFORM in $INPUT_PLATFORMS
 do
     echo $PLATFORM
-    anaconda upload --user $INPUT_UPLOAD_CHANNEL $PLATFORM/*.tar.bz2
+    if [ $INPUT_STABLE == 'true' ] ; then
+      echo "Stable release"
+      anaconda upload --user $INPUT_UPLOAD_CHANNEL $PLATFORM/*.tar.bz2
+    else
+      echo "Beta release"
+      anaconda upload --user -l beta $INPUT_UPLOAD_CHANNEL $PLATFORM/*.tar.bz2
+    fi
 done

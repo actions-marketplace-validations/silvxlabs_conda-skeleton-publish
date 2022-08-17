@@ -10,6 +10,7 @@ Generate a Conda build recipe from a PyPI package and publish to an Anaconda cha
 -  `access_token`* : _Anaconda access token with read and write API permissions_
 -  `build_channels`: _Space separated string of conda channels to use during the build. Defaults to `conda-forge`_
 - `platforms`: _Space separated string of platforms to build. Defaults to `"win-64 osx-64 osx-arm64 linux-64 linux-aarch64"`_
+-  `stable`* : _Set this to true if this is a stable release. Passese a `-l beta` arg if false._
 
 > `*` denotes required inputs
 
@@ -30,4 +31,5 @@ jobs:
           python_version: "3.10"
           upload_channel: "holtz"
           access_token: ${{ secrets.ANACONDA_TOKEN }}
+          stable: true
 ```
