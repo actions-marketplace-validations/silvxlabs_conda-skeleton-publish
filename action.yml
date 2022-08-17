@@ -7,6 +7,9 @@ branding:
 inputs:
   pypi_package:
     description: "Name of PyPI package"
+  package_version:
+    description: "Package version on PyPi"
+    default: "latest"
   python_version:
     description: "Python version to build"
   build_channels:

@@ -3,7 +3,13 @@
 echo "======================================="
 echo "Creating build recipe from PyPI package"
 echo "======================================="
-conda skeleton pypi $INPUT_PYPI_PACKAGE
+if [ $INPUT_PACKAGE_VERSION == 'latest' ] ; then
+  conda skeleton pypi $INPUT_PYPI_PACKAGE
+else
+  echo $INPUT_PACKAGE_VERSION
+  conda skeleton pypi $INPUT_PYPI_PACKAGE --version $INPUT_PACKAGE_VERSION
+fi
+
 
 echo "======================"
 echo "Building conda package"
