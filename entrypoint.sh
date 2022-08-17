@@ -40,6 +40,6 @@ do
       anaconda upload --user $INPUT_UPLOAD_CHANNEL $PLATFORM/*.tar.bz2
     else
       echo "Beta release"
-      anaconda upload --user -l beta $INPUT_UPLOAD_CHANNEL $PLATFORM/*.tar.bz2
+      anaconda upload --user $INPUT_UPLOAD_CHANNEL -l beta $PLATFORM/*.tar.bz2
     fi
 done
