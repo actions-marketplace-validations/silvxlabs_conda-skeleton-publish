@@ -22,6 +22,9 @@ inputs:
   platforms:
     description: "Platforms to publish"
     default: "win-64 osx-64 osx-arm64 linux-64 linux-aarch64"
+  stable:
+    description: "Set this to true if this is a stable release. Passese a `-l beta` arg if false."
+    default: false
 runs:
   using: "docker"
   image: "Dockerfile"
