@@ -7,7 +7,17 @@ if [ $INPUT_PACKAGE_VERSION == 'latest' ] ; then
   conda skeleton pypi $INPUT_PYPI_PACKAGE
 else
   echo $INPUT_PACKAGE_VERSION
-  conda skeleton pypi $INPUT_PYPI_PACKAGE --version $INPUT_PACKAGE_VERSION
+  pypi_status=$(getconf ARG_MAX)
+  while [ $pypi_status -gt 0 ] ; do
+    conda skeleton pypi $INPUT_PYPI_PACKAGE --version $INPUT_PACKAGE_VERSION
+    pypi_status=$?
+    if [ $INPUT_WAIT == 'true' ] && [ $pypi_status -gt 0 ] ; then
+      echo "Waiting for $INPUT_PYPI_PACKAGE $INPUT_PACKAGE_VERSION to be available from PyPi."
+      sleep 10
+    elif [ $pypi_status -gt 0 ] ; then
+      exit $pypi_status
+    fi
+  done
 fi
 
 

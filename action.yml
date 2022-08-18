@@ -25,6 +25,9 @@ inputs:
   stable:
     description: "Set this to true if this is a stable release. Passese a `-l beta` arg if false."
     default: false
+  wait:
+    description: "If true, waits for the PyPi package to become available."
+    default: false
 runs:
   using: "docker"
   image: "Dockerfile"
