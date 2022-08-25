@@ -7,6 +7,9 @@ branding:
 inputs:
   pypi_package:
     description: "Name of PyPI package"
+  package_version:
+    description: "Package version on PyPi"
+    default: "latest"
   python_version:
     description: "Python version to build"
   build_channels:
@@ -19,6 +22,12 @@ inputs:
   platforms:
     description: "Platforms to publish"
     default: "win-64 osx-64 osx-arm64 linux-64 linux-aarch64"
+  stable:
+    description: "Set this to true if this is a stable release. Passese a `-l beta` arg if false."
+    default: false
+  wait:
+    description: "If true, waits for the PyPi package to become available."
+    default: false
 runs:
   using: "docker"
   image: "Dockerfile"
